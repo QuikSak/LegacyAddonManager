@@ -1,0 +1,33 @@
+<Window x:Class="LegacyAddonManager.Views.PublishOptionsWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Style="{StaticResource {x:Type Window}}" Title="Choose addons to publish" Width="790" Height="660" MinWidth="650" MinHeight="500" WindowStartupLocation="CenterOwner">
+  <Grid Margin="26">
+    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <TextBlock Text="Choose what to publish" FontSize="23" FontWeight="SemiBold"/>
+    <TextBlock Grid.Row="1" Text="GitHub addons with established versions are included automatically. You can also share custom, unknown-version, or unmanaged addons by uploading their installed files." Style="{StaticResource MutedText}" Margin="0,10,0,16"/>
+    <StackPanel Grid.Row="2" Margin="0,0,0,12">
+      <CheckBox x:Name="IncludeCustomBox" Content="Include selected custom / unmanaged addon files"/>
+      <StackPanel Orientation="Horizontal" Margin="0,10,0,0" IsEnabled="{Binding IsChecked, ElementName=IncludeCustomBox}">
+        <Button Content="Select All" Click="SelectAll_Click" Margin="0,0,8,0"/><Button Content="Clear Selection" Click="Clear_Click"/>
+      </StackPanel>
+    </StackPanel>
+    <Border Grid.Row="3" Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" CornerRadius="8">
+      <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="14" IsEnabled="{Binding IsChecked, ElementName=IncludeCustomBox}">
+        <ItemsControl x:Name="CandidatesList" AutomationProperties.Name="Custom addons to upload">
+          <ItemsControl.ItemTemplate><DataTemplate>
+            <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay}" HorizontalContentAlignment="Stretch" Margin="0,8">
+              <StackPanel>
+                <TextBlock Text="{Binding Name}" FontWeight="SemiBold" TextWrapping="Wrap"/>
+                <TextBlock Text="{Binding Folders}" Style="{StaticResource MutedText}" FontSize="12" Margin="0,4,0,0"/>
+                <TextBlock Text="{Binding Description}" Style="{StaticResource MutedText}" FontSize="12" Margin="0,3,0,0"/>
+              </StackPanel>
+            </CheckBox>
+          </DataTemplate></ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </ScrollViewer>
+    </Border>
+    <TextBlock Grid.Row="4" Text="Selected addon folders are uploaded as ZIPs, including custom files inside them. WTF and SavedVariables outside AddOns stay local. Close WoW first. You will review the complete publication before uploading." Style="{StaticResource MutedText}" FontSize="12" Margin="0,16,0,0"/>
+    <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+      <Button Content="Cancel" IsCancel="True" Margin="0,0,10,0"/><Button Content="Review Publication" Style="{StaticResource PrimaryButton}" Click="Review_Click"/>
+    </StackPanel>
+  </Grid>
+</Window>

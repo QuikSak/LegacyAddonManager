@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>LegacyAddonManager</AssemblyName>
+    <Product>Legacy Addon Manager</Product>
+    <Version>1.4.1</Version>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets/app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Resource Include="Assets/app.ico" />
+    <EmbeddedResource Include="Assets/ThirdParty/rclone-windows-amd64.zip" LogicalName="LegacyAddonManager.Tools.rclone.zip" />
+    <EmbeddedResource Include="Assets/ThirdParty/RCLONE-LICENSE.txt" LogicalName="LegacyAddonManager.Tools.rclone-license.txt" />
+    <ProjectReference Include="../LegacyAddonManager.Core/LegacyAddonManager.Core.csproj" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
+  </ItemGroup>
+</Project>

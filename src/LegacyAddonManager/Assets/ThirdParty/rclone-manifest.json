@@ -1,0 +1,10 @@
+{
+  "version": "v1.75.1",
+  "platform": "windows-amd64",
+  "archiveUrl": "https://downloads.rclone.org/v1.75.1/rclone-v1.75.1-windows-amd64.zip",
+  "checksumSource": "https://downloads.rclone.org/v1.75.1/SHA256SUMS",
+  "archiveSha256": "200EB602C126D82AA38B51E0F6B9AE837473FF99B51278D3F6F837574C494D6E",
+  "executableSha256": "033EEE51C9AD47C2DE2624B6674D355274BCD6CF0027A5F85DB4437BA24AE81C",
+  "license": "MIT",
+  "licenseSource": "https://github.com/rclone/rclone/blob/v1.75.1/COPYING"
+}
